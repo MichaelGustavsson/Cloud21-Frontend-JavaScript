@@ -51,7 +51,7 @@ console.log(typeof make);
     const = deklarerar en variabel i ett block scope (immutable)
 */
 
-// UNDVIK ATT ANVÄNDA var I MODERN JAVASCRIPT 
+// UNDVIK ATT ANVÄNDA var I MODERN JAVASCRIPT
 
 // let:
 
@@ -139,18 +139,25 @@ const occupation = 'Developer';
 const startTeachingYear = 1990;
 const currentYear = 2021;
 
-const badWay = "I'm " + firstName + ', and I am a ' 
-    + occupation + ' and I have been teaching for ' 
-    + (currentYear - startTeachingYear) + ' years';
+const badWay =
+  "I'm " +
+  firstName +
+  ', and I am a ' +
+  occupation +
+  ' and I have been teaching for ' +
+  (currentYear - startTeachingYear) +
+  ' years';
 
 console.log(badWay);
 
 // String interpolation...
-const rightWay = `I'm ${firstName} and I am a ${occupation} and have been teaching web technologies for ${(currentYear - startTeachingYear)} years`; 
+const rightWay = `I'm ${firstName} and I am a ${occupation} and have been teaching web technologies for ${
+  currentYear - startTeachingYear
+} years`;
 console.log(rightWay);
 
 const html = `<div class="demo">Test html</div>
     <p>Lite extra text</p>
-    <input type="submit" value="klicka här!">`
+    <input type="submit" value="klicka här!">`;
 
 console.log(html);
