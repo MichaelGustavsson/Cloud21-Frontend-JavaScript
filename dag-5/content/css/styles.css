@@ -17,3 +17,25 @@ body {
 main {
   padding: 3rem 2rem 2.5rem 2rem;
 }
+
+.btn {
+  display: inline-block;
+  border: none;
+  background: #222;
+  cursor: pointer;
+  color: #f4f4f4;
+  padding: 0.5rem 1.5rem;
+  outline: none !important;
+}
+
+.btn-secondary {
+  background: #ee9504;
+  color: #222;
+}
+
+.form-control {
+  padding: 8px 4px;
+  border: solid 1px #c2c2c2;
+  border-radius: 5px;
+  outline: none !important;
+}

@@ -31,3 +31,25 @@ thead {
   color: #9b0404;
   cursor: pointer;
 }
+
+#addVehicle-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: center;
+  margin: 3rem 0 2.5rem 0;
+}
+
+input[type='text'],
+textarea {
+  width: 400px;
+}
+
+textarea {
+  height: 100px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}

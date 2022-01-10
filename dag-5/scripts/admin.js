@@ -54,15 +54,28 @@ function createTable(vehicleList) {
       <tr>
         <td><i class="fal fa-pencil-alt edit"></i></td>
         <td>${car.id}</td>
-        <td>${car.registrationNo}</td>
+        <td>${car.registrationNumber}</td>
         <td>${car.make}</td>
         <td>${car.model}</td>
         <td>${car.modelYear}</td>
         <td>${car.mileage}</td>
-        <td>${car.value}</td>
+        <td>${car.value == undefined ? 0 : car.value}</td>
         <td><i class="far fa-trash-alt delete"></i></td>
       </tr>
     `;
+    // html += `
+    //   <tr>
+    //     <td><i class="fal fa-pencil-alt edit"></i></td>
+    //     <td>${car.id}</td>
+    //     <td>${car.registrationNo}</td>
+    //     <td>${car.make}</td>
+    //     <td>${car.model}</td>
+    //     <td>${car.modelYear}</td>
+    //     <td>${car.mileage}</td>
+    //     <td>${car.value}</td>
+    //     <td><i class="far fa-trash-alt delete"></i></td>
+    //   </tr>
+    // `;
   }
 
   // Placera värdet i html variabeln till vehicleTable variabel ovan
@@ -71,7 +84,6 @@ function createTable(vehicleList) {
 
   //Iterera igenom alla rader och plocka ut kolumnen för redigering...
   let tableRows = document.querySelectorAll('.table-container .edit');
-  console.log(tableRows);
 
   tableRows.forEach((item) => {
     // Traversera dom för att få tag i identiteten för varje bil...
@@ -82,18 +94,21 @@ function createTable(vehicleList) {
       // console.log(`Du klickade på bil med identitet ${id}`);
       location.href = `edit.html?vehicleId=${id}`;
     });
+
+    // Skapa en händelse hanterare som även kan indikera att vi vill
+    // ta bort en bil ur listan...
+    // Använd Console.log för att indikera att vi tar bort en bil...
+    // Extra bonus! försök att ta bort den ur vår array...
   });
 }
 
-async function loadVehicles() {
-  const response = await fetch('/data/vehicles.json');
+// loadVehicles()
+//   .then((data) => {
+//     createTable(data);
+//   })
+//   .catch((err) => console.log(err));
 
-  if (!response.ok) throw new Error(response.statusText);
-
-  return response.json();
-}
-
-loadVehicles()
+loadVehiclesFromRestApi()
   .then((data) => {
     console.log(data);
     createTable(data);
