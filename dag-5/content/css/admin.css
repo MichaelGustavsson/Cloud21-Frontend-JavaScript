@@ -1,0 +1,33 @@
+table {
+  border-collapse: collapse;
+  background-color: #fff;
+  width: 100%;
+  min-width: 600px;
+  border: solid 1px #152d6d;
+}
+
+th {
+  text-align: left;
+  padding: 0.6rem 0.3rem;
+}
+
+td {
+  padding: 0.3rem;
+  border-bottom: solid 1px #f3f3f3;
+}
+
+thead {
+  background-color: #152d6d;
+  color: #fff;
+}
+
+.edit {
+  color: #1e1e72;
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+.delete {
+  color: #9b0404;
+  cursor: pointer;
+}

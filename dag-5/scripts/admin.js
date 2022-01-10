@@ -60,7 +60,7 @@ function createTable(vehicleList) {
         <td>${car.modelYear}</td>
         <td>${car.mileage}</td>
         <td>${car.value}</td>
-        <td><i class="far fa-trash-alt"></i></td>
+        <td><i class="far fa-trash-alt delete"></i></td>
       </tr>
     `;
   }
