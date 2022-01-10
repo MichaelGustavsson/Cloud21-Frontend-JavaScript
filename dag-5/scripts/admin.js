@@ -95,6 +95,7 @@ async function loadVehicles() {
 
 loadVehicles()
   .then((data) => {
+    console.log(data);
     createTable(data);
   })
   .catch((err) => console.log(err));
