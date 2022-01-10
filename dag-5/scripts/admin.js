@@ -78,9 +78,9 @@ function createTable(vehicleList) {
     const id = item.parentNode.parentNode.children[1].firstChild.nodeValue;
 
     // Skapa en klick händelse på ikonen penna...
-    console.log(item);
     item.addEventListener('click', () => {
-      console.log(`Du klickade på bil med identitet ${id}`);
+      // console.log(`Du klickade på bil med identitet ${id}`);
+      location.href = `edit.html?vehicleId=${id}`;
     });
   });
 }
