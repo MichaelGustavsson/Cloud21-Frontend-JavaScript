@@ -54,13 +54,30 @@ function createTable(vehicleList) {
       // splice tar som första argument vilket index som vi skall starta på.
       // som andra argument hur många element skall tas bort...
       vehicleList.splice(index, 1);
+
+      localStorage.setItem('vehicleData', JSON.stringify(vehicleList));
+
       createTable(vehicleList);
     });
   });
 }
 
-loadVehicles()
-  .then((data) => {
+function initPage() {
+  console.log('Initierar admin sidan');
+
+  const data = JSON.parse(localStorage.getItem('vehicleData'));
+  console.log(data);
+
+  if (data != null && data.length > 0) {
     createTable(data);
-  })
-  .catch((err) => console.log(err));
+  } else {
+    loadVehicles()
+      .then((data) => {
+        localStorage.setItem('vehicleData', JSON.stringify(data));
+        createTable(data);
+      })
+      .catch((err) => console.log(err));
+  }
+}
+
+initPage();

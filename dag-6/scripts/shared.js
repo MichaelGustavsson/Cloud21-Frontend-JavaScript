@@ -5,7 +5,8 @@ async function loadVehicles() {
 
   if (!response.ok) throw new Error(response.statusText);
 
-  return response.json();
+  const json = await response.json();
+  return json;
 }
 
 // async function loadVehiclesFromRestApi() {
