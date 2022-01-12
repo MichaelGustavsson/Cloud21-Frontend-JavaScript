@@ -7,11 +7,12 @@ async function loadVehicles() {
 
   return response.json();
 }
-async function loadVehiclesFromRestApi() {
-  const url = 'https://westcoast-cars-api.azurewebsites.net/api/vehicle';
-  const response = await fetch(url);
 
-  if (!response.ok) throw new Error(response.statusText);
+// async function loadVehiclesFromRestApi() {
+//   const url = 'https://westcoast-cars-api.azurewebsites.net/api/vehicle';
+//   const response = await fetch(url);
 
-  return response.json();
-}
+//   if (!response.ok) throw new Error(response.statusText);
+
+//   return response.json();
+// }
