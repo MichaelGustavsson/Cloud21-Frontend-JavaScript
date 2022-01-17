@@ -1,6 +1,54 @@
 'use strict';
 
 const vehicleTable = document.querySelector('#vehicle-list');
+// Hämta en referens till deleteDialog...
+const deleteVehicleModal = document.querySelector('#deleteVehicleDialog');
+// Hämta en referens till overlay html...
+const overlay = document.querySelector('.overlay');
+// Hämta refenser till att kunna stänga delete dialogrutan...
+const closeDeleteModal = document.querySelector('#closeDeleteModal');
+const cancelDeleteModal = document.querySelector('#cancelDelete');
+// Hämta en refens till knappen delete i deleteVehicleDialog...
+const deleteVehicle = document.querySelector('#delete');
+// Hämta en referens till span elementet som finns i delete dialogens h2...
+const vehicleInfoToRemove = document.querySelector('.modal-title > p');
+
+// Deklarera en variable som är global för admin.js filen...
+let indexToRemove = 0;
+
+// Funktion för att stänga fönster och overlay för Delete dialogrutan...
+// Function Expression...
+const closeDeleteDialog = () => {
+  deleteVehicleModal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
+closeDeleteModal.addEventListener('click', closeDeleteDialog);
+cancelDeleteModal.addEventListener('click', closeDeleteDialog);
+
+// Aktivera möjlighet att stänga dialogrutor med Esc tangenten...
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (!deleteVehicleModal.classList.contains('hidden')) {
+      closeDeleteDialog();
+    }
+  }
+});
+
+// Aktivera möjlighet att ta bort en vald bil...
+deleteVehicle.addEventListener('click', () => {
+  // Steg 1. läsa in listan av befintliga bilar ifrån localStorage...
+  const vehicleList = JSON.parse(localStorage.getItem('vehicleData'));
+
+  // Steg 2. Ta bort ur vår array(vehicleList)...
+  vehicleList.splice(indexToRemove, 1);
+  // Steg 3. Uppdatera localStorage med vår nya array(vehicleList)...
+  localStorage.setItem('vehicleData', JSON.stringify(vehicleList));
+  // Steg 4. Uppdatera tabellen...
+  createTable(vehicleList);
+  // Steg 5. Stäng dialogruta och ta bort overlay...
+  closeDeleteDialog();
+});
 
 function createTable(vehicleList) {
   let html = '';
@@ -49,15 +97,15 @@ function createTable(vehicleList) {
     const id = item.parentNode.parentNode.children[1].firstChild.nodeValue;
 
     item.addEventListener('click', () => {
+      deleteVehicleModal.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+
       const vehicle = vehicleList.find((vehicle) => vehicle.id == id);
       const index = vehicleList.findIndex((element) => element === vehicle);
-      // splice tar som första argument vilket index som vi skall starta på.
-      // som andra argument hur många element skall tas bort...
-      vehicleList.splice(index, 1);
 
-      localStorage.setItem('vehicleData', JSON.stringify(vehicleList));
+      vehicleInfoToRemove.textContent = `${vehicle.registrationNumber} ${vehicle.make} ${vehicle.model}`;
 
-      createTable(vehicleList);
+      indexToRemove = index;
     });
   });
 }
