@@ -33,6 +33,10 @@ main {
   color: #222;
 }
 
+.btn-danger {
+  background: #a82020;
+}
+
 .form-control {
   padding: 8px 4px;
   border: solid 1px #c2c2c2;

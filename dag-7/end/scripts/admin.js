@@ -31,6 +31,7 @@ function createTable(vehicleList) {
 
   let tableRows = document.querySelectorAll('.table-container .edit');
 
+  // Aktivera ändringsmöjlighet av vald bil...
   tableRows.forEach((item) => {
     // Traversera dom för att få tag i identiteten för varje bil...
     const id = item.parentNode.parentNode.children[1].firstChild.nodeValue;
@@ -43,12 +44,11 @@ function createTable(vehicleList) {
 
   tableRows = document.querySelectorAll('.table-container .delete');
 
+  // Aktivera borttagning av vald bil...
   tableRows.forEach((item) => {
     const id = item.parentNode.parentNode.children[1].firstChild.nodeValue;
 
     item.addEventListener('click', () => {
-      // Kan va bra att ha en bekräftelse dialog rutan innan vi tar bort något...
-      // Skapa en modal dialogrutan
       const vehicle = vehicleList.find((vehicle) => vehicle.id == id);
       const index = vehicleList.findIndex((element) => element === vehicle);
       // splice tar som första argument vilket index som vi skall starta på.
@@ -63,10 +63,7 @@ function createTable(vehicleList) {
 }
 
 function initPage() {
-  console.log('Initierar admin sidan');
-
   const data = JSON.parse(localStorage.getItem('vehicleData'));
-  console.log(data);
 
   if (data != null && data.length > 0) {
     createTable(data);
