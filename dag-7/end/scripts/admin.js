@@ -18,14 +18,36 @@ const vehicleInStock = document.querySelector('.table-footer > h4');
 const addNewVehicleButton = document.querySelector('#addNewVehicle');
 // Hämta en refens till dialog rutan för att lägga till ny bil...
 const addNewVehicleModal = document.querySelector('#addVehicleDialog');
+// Hämta en referens till knappen avbryt i dialogrutan addNewVehicleModal...
+const cancelAddVehicle = document.querySelector('#cancelAddVehicle');
+// Hämta referens till addNewVehicleModals kryss knapp för att stänga dialogrutan...
+const closeAddVehicleModel = document.querySelector('#closeAddVehicleModal');
+// Hämta en referens till spara knappen i addNewVehiclesModals dialogrutan...
+const saveVehicle = document.querySelector('#saveVehicle');
+// Hämt referenser till varje input fält i formuläret...
+const regNoInput = document.querySelector('#regNoInput');
+const makeInput = document.querySelector('#makeInput');
+const modelInput = document.querySelector('#modelInput');
+const modelYearInput = document.querySelector('#modelYearInput');
+const mileageInput = document.querySelector('#mileageInput');
+const valueInput = document.querySelector('#valueInput');
+const descriptionInput = document.querySelector('#descriptionInput');
 
 // Deklarera en variable som är global för admin.js filen...
 let indexToRemove = 0;
+let indexToUse = 200;
 
 // Funktion för att stänga fönster och overlay för Delete dialogrutan...
 // Function Expression...
 const closeDeleteDialog = () => {
   deleteVehicleModal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+
+// Funktion för att stänga fönster och overlay för AddNewVehicle dialogrutan...
+// Function Expression...
+const closeAddVehicleDialog = () => {
+  addNewVehicleModal.classList.add('hidden');
   overlay.classList.add('hidden');
 };
 
@@ -38,6 +60,10 @@ document.addEventListener('keydown', (e) => {
     if (!deleteVehicleModal.classList.contains('hidden')) {
       closeDeleteDialog();
     }
+
+    if (!closeAddVehicleModel.classList.contains('hidden')) {
+      closeAddVehicleDialog();
+    }
   }
 });
 
@@ -45,6 +71,62 @@ document.addEventListener('keydown', (e) => {
 addNewVehicleButton.addEventListener('click', () => {
   addNewVehicleModal.classList.remove('hidden');
   overlay.classList.remove('hidden');
+});
+
+// Funktioner för att stänga addNewVehicle dialogrutan när vi klickar på krysset eller på avbryt...
+closeAddVehicleModel.addEventListener('click', () => {
+  closeAddVehicleDialog();
+});
+
+cancelAddVehicle.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const vehicleList = JSON.parse(localStorage.getItem('vehicleData'));
+
+  closeAddVehicleDialog();
+});
+
+// Aktivera möjlighet att lägga till en ny bil i systemet...
+saveVehicle.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  // Hämta bilarna som finns i localStorage och konvertera till en JavaScript objekt array...
+  const vehicleList = JSON.parse(localStorage.getItem('vehicleData'));
+
+  let maxId = Math.max(...vehicleList.map((list) => list.id));
+  maxId += 1;
+
+  // Skapa ett objekt med alla egenskaper som vi behöver.
+  // Hämta värdena för respektive egenskap ifrån referense i formuläret...
+  const vehicle = {
+    id: maxId,
+    registrationNumber: regNoInput.value,
+    make: makeInput.value,
+    model: modelInput.value,
+    modelYear: modelYearInput.value,
+    mileage: mileageInput.value,
+    value: valueInput.value,
+    description: descriptionInput.value,
+  };
+
+  // Lägg till den nya bilen i vår array...
+  vehicleList.push(vehicle);
+
+  // Skriv ner den nya listan av bilar till localStorage...
+  localStorage.setItem('vehicleData', JSON.stringify(vehicleList));
+  // Rita om tabellen igen...
+  createTable(vehicleList);
+  // Stäng dialogrutan...
+  closeAddVehicleDialog();
+
+  // Töm inmatningsfältet på gammal information...
+  regNoInput.value = '';
+  makeInput.value = '';
+  modelInput.value = '';
+  modelYearInput.value = '';
+  mileageInput.value = '';
+  valueInput.value = '';
+  descriptionInput.value = '';
 });
 
 // Aktivera möjlighet att ta bort en vald bil...

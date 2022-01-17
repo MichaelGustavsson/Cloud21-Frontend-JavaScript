@@ -18,6 +18,10 @@ main {
   padding: 3rem 2rem 2.5rem 2rem;
 }
 
+textarea {
+  font-family: 'Roboto', sans-serif;
+}
+
 .btn {
   display: inline-block;
   border: none;
