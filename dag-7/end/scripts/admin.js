@@ -12,6 +12,12 @@ const cancelDeleteModal = document.querySelector('#cancelDelete');
 const deleteVehicle = document.querySelector('#delete');
 // Hämta en referens till span elementet som finns i delete dialogens h2...
 const vehicleInfoToRemove = document.querySelector('.modal-title > p');
+// Hämta en referens till table footer...
+const vehicleInStock = document.querySelector('.table-footer > h4');
+// Hämta en referens till knappen lägga till ny bil...
+const addNewVehicleButton = document.querySelector('#addNewVehicle');
+// Hämta en refens till dialog rutan för att lägga till ny bil...
+const addNewVehicleModal = document.querySelector('#addVehicleDialog');
 
 // Deklarera en variable som är global för admin.js filen...
 let indexToRemove = 0;
@@ -35,6 +41,12 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+// Aktivera möjlighet att lägga till ny bil i systemet...
+addNewVehicleButton.addEventListener('click', () => {
+  addNewVehicleModal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+});
+
 // Aktivera möjlighet att ta bort en vald bil...
 deleteVehicle.addEventListener('click', () => {
   // Steg 1. läsa in listan av befintliga bilar ifrån localStorage...
@@ -52,6 +64,9 @@ deleteVehicle.addEventListener('click', () => {
 
 function createTable(vehicleList) {
   let html = '';
+
+  // Ange antal bilar i lager...
+  vehicleInStock.textContent = `Antal bilar lager i lager ${vehicleList.length}`;
 
   //Töm <tbody></tbody> på dess data...
   vehicleTable.innerHTML = '';

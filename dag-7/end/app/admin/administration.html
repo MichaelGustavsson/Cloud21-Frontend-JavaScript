@@ -16,24 +16,32 @@
   <body>
     <main>
       <section id="tableView" class="container">
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th></th>
-                <th>#</th>
-                <th>Regnummer</th>
-                <th>Tillverkare</th>
-                <th>Modell</th>
-                <th>Modell år</th>
-                <th>Antal km</th>
-                <th>Pris</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="vehicle-list"></tbody>
-          </table>
-        </div>
+        <section class="scroll-container">
+          <div class="table-header">
+            <button class="btn" id="addNewVehicle">Lägg till ny bil</button>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>#</th>
+                  <th>Regnummer</th>
+                  <th>Tillverkare</th>
+                  <th>Modell</th>
+                  <th>Modell år</th>
+                  <th>Antal km</th>
+                  <th>Pris</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="vehicle-list"></tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <h4>Antal bilar i lager</h4>
+          </div>
+        </section>
       </section>
 
       <!-- Skapa html för modal dialogruta för att ta bort en bil! -->
@@ -49,6 +57,63 @@
             <button class="btn btn-danger" id="delete">Ta bort</button>
             <button class="btn btn-secondary" id="cancelDelete">Avbryt</button>
           </div>
+        </section>
+      </section>
+
+      <!-- Skapa en modal dialogruta för att lägga till en ny bil! -->
+      <section id="addVehicleDialog" class="modal hidden">
+        <button id="closeAddVehicleModal" class="close-modal">&times</button>
+        <section id="addVehicleContainer">
+          <form class="modal-content">
+            <input
+              type="text"
+              id="regNoInput"
+              class="form-control"
+              placeholder="Ange registeringsnummer"
+            />
+            <input
+              type="text"
+              id="makeInput"
+              class="form-control"
+              placeholder="Ange bil tillverkare"
+            />
+            <input
+              type="text"
+              id="modelInput"
+              class="form-control"
+              placeholder="Ange bil modell"
+            />
+            <input
+              type="text"
+              id="modelYearInput"
+              class="form-control"
+              placeholder="Ange årsmodell"
+            />
+            <input
+              type="text"
+              id="mileageInput"
+              class="form-control"
+              placeholder="Ange antal körda km"
+            />
+            <input
+              type="text"
+              id="valueInput"
+              class="form-control"
+              placeholder="Ange pris"
+            />
+            <textarea
+              type="text"
+              id="descriptionInput"
+              class="form-control"
+              placeholder="Beskrivning"
+            ></textarea>
+            <div class="buttons">
+              <button id="saveVehicle" class="btn">Spara</button>
+              <button id="cancelAddVehicle" class="btn btn-secondary">
+                Avbryt
+              </button>
+            </div>
+          </form>
         </section>
       </section>
     </main>

@@ -29,8 +29,29 @@ textarea {
   height: 100px;
 }
 
-.table-container {
+.scroll-container {
   border: solid 1px #152d6d;
+}
+.table-container {
+}
+
+.table-header {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  background-color: #ee9504;
+  padding: 0.8rem 1rem;
+  color: #1e1e72;
+}
+
+.table-footer {
+  display: flex;
+  justify-content: center;
+  background-color: #ee9504;
+  padding: 0.8rem 1rem;
+  gap: 10px;
+  color: #1e1e72;
+  border-top: solid 1px #152d6d;
 }
 
 .edit {
