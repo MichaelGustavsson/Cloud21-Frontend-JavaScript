@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/734a53a685.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/content/css/styles.css" />
+    <link rel="stylesheet" href="/content/css/admin.css" />
+    <title>Ändra fordons egenskaper</title>
+  </head>
+  <body>
+    <header>
+      <nav id="admin-nav">
+        <div class="container">
+          <ul>
+            <li>
+              <i class="fal fa-arrow-alt-left"></i>
+              <a href="../admin/administration.html">Tillbaka</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- Skapa ett formulär för att ändra en bils egenskaper -->
+      <section id="addVehicle-container">
+        <form>
+          <input
+            type="text"
+            disabled="disable"
+            id="regNoInput"
+            class="form-control"
+            placeholder="Registreringsnummer"
+          />
+          <input
+            type="text"
+            id="makeInput"
+            class="form-control"
+            placeholder="Tillverkare"
+          />
+          <input
+            type="text"
+            id="modelInput"
+            class="form-control"
+            placeholder="Modell"
+          />
+          <input
+            type="text"
+            id="modelYearInput"
+            class="form-control"
+            placeholder="Modell år"
+          />
+          <input
+            type="text"
+            id="mileageInput"
+            class="form-control"
+            placeholder="Antal km"
+          />
+          <input
+            type="text"
+            id="valueInput"
+            class="form-control"
+            placeholder="Pris"
+          />
+          <textarea
+            type="text"
+            id="descriptionInput"
+            class="form-control"
+            placeholder="Beskrivning"
+          ></textarea>
+          <div class="buttons">
+            <button id="save" class="btn">Spara</button>
+            <button id="cancel" class="btn btn-secondary">Avbryt</button>
+          </div>
+        </form>
+      </section>
+      <!-- Slut skapa ett formulär för att ändra en bils egenskaper -->
+    </main>
+    <script src="/scripts/shared.js"></script>
+    <script src="/scripts/admin-edit.js"></script>
+  </body>
+</html>
