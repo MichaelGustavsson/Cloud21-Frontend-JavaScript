@@ -32,7 +32,7 @@
 }
 
 .modal-content p {
-  color: red;
+  color: var(--danger-color);
   padding-top: 1rem;
   padding-bottom: 1rem;
 }

@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
+:root {
+  --primary-color: #27279b;
+  --secondary-color: #ee9504;
+  --danger-color: #a82020;
+}
+
 /*Reset*/
 * {
   margin: 0;
@@ -33,12 +39,12 @@ textarea {
 }
 
 .btn-secondary {
-  background: #ee9504;
+  background: var(--secondary-color);
   color: #222;
 }
 
 .btn-danger {
-  background: #a82020;
+  background: var(--danger-color);
 }
 
 .form-control {
