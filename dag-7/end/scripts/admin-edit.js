@@ -10,9 +10,15 @@ const valueInput = document.querySelector('#valueInput');
 const descriptionInput = document.querySelector('#descriptionInput');
 
 const saveButton = document.querySelector('#save');
+const cancelButton = document.querySelector('#cancel');
 
 let vehicle;
 let vehiclesList;
+
+cancelButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  location.href = 'administration.html';
+});
 
 saveButton.addEventListener('click', updateVehicle);
 
@@ -49,7 +55,6 @@ function initPage() {
 function updateVehicle(e) {
   e.preventDefault();
 
-  // console.log(vehicle);
   try {
     let tmpVehicle = {
       id: vehicle.id,
@@ -66,13 +71,12 @@ function updateVehicle(e) {
     console.log(tmpVehicle);
 
     const index = vehiclesList.findIndex((item) => item === vehicle);
-    console.log(vehiclesList);
-    console.log(index);
 
     vehiclesList.splice(index, 1, tmpVehicle);
     console.log(vehiclesList);
 
     localStorage.setItem('vehicleData', JSON.stringify(vehiclesList));
+    location.href = 'administration.html';
   } catch (error) {
     console.log('Det gick lite fel här!', error);
   }

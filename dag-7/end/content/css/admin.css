@@ -32,7 +32,9 @@ textarea {
 .scroll-container {
   border: solid 1px #152d6d;
 }
+
 .table-container {
+  overflow-x: scroll;
 }
 
 .table-header {
